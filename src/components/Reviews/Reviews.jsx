@@ -1,1 +1,1 @@
-import css from "./Reviews.module.css";
+import css from './Reviews.module.css';

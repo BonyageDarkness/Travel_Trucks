@@ -1,0 +1,51 @@
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%; /* Хедер на всю ширину */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Размещаем логотип и навигацию */
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px 64px;
+}
+
+.logo {
+    width: 136px;
+    height: 16px;
+}
+
+.nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin: 0 auto; /* Центрируем ссылки */
+}
+
+.link {
+    color: var(--Main, #101828);
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #000;
+}
+
+.activeLink {
+    font-family: Inter, sans-serif;
+    color: #d84343;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    text-decoration: none;
+}
