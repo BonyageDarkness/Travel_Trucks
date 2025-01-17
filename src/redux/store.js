@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import catalogReducer from './catalog/slice';
+import filtersReducer from './filters/slice';
 
 const store = configureStore({
     reducer: {
-        catalog: catalogReducer,
+        filters: filtersReducer,
     },
 });
 

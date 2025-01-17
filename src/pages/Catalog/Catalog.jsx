@@ -15,29 +15,43 @@ function Catalog() {
     useEffect(() => {
         fetchCampers();
     }, [page, filters]);
+    const vehicleTypeMapping = {
+        Van: 'panelTruck',
+        'Fully Integrated': 'fullyIntegrated',
+        Alcove: 'alcove',
+    };
 
     const fetchCampers = async () => {
         setIsLoading(true);
         try {
+            const params = {
+                page,
+                limit: 4,
+                location: filters.location || undefined,
+                form: vehicleTypeMapping[filters.vehicleType] || undefined,
+                transmission: filters.equipment?.Automatic
+                    ? 'automatic'
+                    : undefined, // Если выбран Automatic
+                ...Object.keys(filters.equipment || {}).reduce((acc, key) => {
+                    if (filters.equipment[key] && key !== 'Automatic') {
+                        acc[key] = true;
+                    }
+                    return acc;
+                }, {}),
+            };
+
             const response = await axios.get(
                 `https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers`,
-                {
-                    params: {
-                        page,
-                        limit: 4,
-                        ...filters,
-                    },
-                },
+                { params },
             );
-            console.log('API Response:', response.data); // Проверяем данные
+
             if (response.data.items.length > 0) {
-                // Изменено на response.data.items
-                setCampers(
-                    (prevCampers) =>
-                        page === 1
-                            ? response.data.items // Обновляем весь список
-                            : [...prevCampers, ...response.data.items], // Добавляем к существующему
+                setCampers((prevCampers) =>
+                    page === 1
+                        ? response.data.items
+                        : [...prevCampers, ...response.data.items],
                 );
+                setHasMore(response.data.items.length === 4);
             } else {
                 setHasMore(false);
             }
@@ -64,7 +78,6 @@ function Catalog() {
 
     return (
         <div className={styles.catalog}>
-            <h1 className={styles.title}>Our Campers</h1>
             <FilterForm onApplyFilters={handleApplyFilters} />
             <div className={styles.grid}>
                 {campers.length > 0 ? (

@@ -1,5 +1,7 @@
 html,
-body {
+body,
+p,
+h3 {
     margin: 0 auto;
     padding: 0;
     overflow-x: hidden;
