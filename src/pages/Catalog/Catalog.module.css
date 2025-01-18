@@ -6,11 +6,53 @@
 
 .filter {
     flex: 1;
-    max-width: 300px;
+    max-width: 360px;
 }
 
 .list {
-    flex: 3;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 32px;
+    justify-content: center; /* Центрируем список карточек */
+    width: 100%; /* Устанавливаем полную ширину для списка */
+}
+
+.loadMoreWrapper {
+    display: flex;
+    justify-content: center; /* Центрируем кнопку относительно списка */
+    margin-top: 40px;
+    width: 100%;
+}
+
+.loadMore {
+    display: inline-flex;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 200px;
+    color: var(--Main, #101828);
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.08px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.loadMore.inactive {
+    border: 1px solid var(--Gray-light, #dadde1);
+    background-color: white;
+    cursor: not-allowed;
+    color: var(--Gray-dark, #9e9e9e);
+}
+
+.loadMore.active {
+    border: 1px solid var(--Button-Hover, #d84343);
+    background-color: white;
+}
+
+.loadMore.active:hover {
+    border: 1px solid var(--Button-Hover, #d84343);
+    background-color: white;
 }

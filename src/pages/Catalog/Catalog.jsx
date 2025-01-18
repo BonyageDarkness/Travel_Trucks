@@ -78,22 +78,32 @@ function Catalog() {
 
     return (
         <div className={styles.catalog}>
-            <FilterForm onApplyFilters={handleApplyFilters} />
-            <div className={styles.grid}>
-                {campers.length > 0 ? (
-                    campers.map((camper) => (
-                        <CamperCard key={camper.id} camper={camper} />
-                    ))
-                ) : (
-                    <p>No campers available</p>
-                )}
+            <div className={styles.filter}>
+                <FilterForm onApplyFilters={handleApplyFilters} />
             </div>
-            {isLoading && <Loader />}
-            {hasMore && !isLoading && (
-                <button className={styles.loadMore} onClick={handleLoadMore}>
-                    Load More
-                </button>
-            )}
+            <div className={styles.content}>
+                <div className={styles.list}>
+                    {campers.length > 0 ? (
+                        campers.map((camper) => (
+                            <CamperCard key={camper.id} camper={camper} />
+                        ))
+                    ) : (
+                        <p>No campers available</p>
+                    )}
+                    {isLoading && <Loader />}
+                </div>
+                <div className={styles.loadMoreWrapper}>
+                    <button
+                        className={`${styles.loadMore} ${
+                            hasMore ? styles.active : styles.inactive
+                        }`}
+                        onClick={hasMore ? handleLoadMore : undefined} // Только если есть что загружать
+                        disabled={!hasMore || isLoading} // Неактивная кнопка, если нечего загружать
+                    >
+                        {hasMore ? 'Load More' : 'No More Trucks'}
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }

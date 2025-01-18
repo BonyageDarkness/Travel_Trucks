@@ -1,11 +1,12 @@
 .card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 12px;
+    padding: 24px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 1rem;
     transition: transform 0.3s;
 }
 
@@ -14,41 +15,201 @@
 }
 
 .image {
-    width: 100%;
-    height: 150px;
+    width: 292px;
+    min-height: 320px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: lightgray;
     object-fit: cover;
-    border-radius: 4px;
 }
 
-.name {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin: 0.5rem 0;
-    color: #333;
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Добавлено для растяжения блока */
+    width: 524px;
+    min-height: 320px; /* Задание фиксированной высоты для выравнивания */
 }
 
-.location {
-    font-size: 0.9rem;
-    color: #777;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Исправление вертикального выравнивания */
+    width: 100%;
+}
+
+.priceAndHeart {
+    display: flex; /* Устанавливаем горизонтальное расположение */
+    align-items: center; /* Выравниваем по вертикали */
+    justify-content: flex-end; /* Прижимаем к правой стороне */
+    gap: 12px; /* Расстояние между ценой и сердечком */
+    flex-shrink: 0; /* Убираем влияние других элементов */
+    white-space: nowrap; /* Предотвращаем перенос */
 }
 
 .price {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin: 0.5rem 0;
-    color: #ff4500;
+    color: var(--Main, #101828);
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.333; /* Уменьшить высоту строки */
+    margin: 0;
+}
+
+.heartIcon {
+    width: 24px;
+    height: 24px;
+    fill: #101828;
+    cursor: pointer;
+    transition: fill 0.3s;
+}
+
+.heartIcon:hover {
+    fill: #ff4500;
+}
+
+.name {
+    color: var(--Main, #101828);
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 133.333%;
+    margin: 0;
+}
+
+.priceAndHeart {
+    display: flex;
+    /* Расположить элементы вертикально */
+    /* Чтобы цена оставалась справа */
+    gap: 12px;
+    flex-shrink: 0; /* Защита от смещения */
+    white-space: nowrap;
+}
+
+.price {
+    color: var(--Main, #101828);
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 133.333%;
+}
+
+.heartIcon {
+    width: 24px;
+    height: 24px;
+    fill: #101828;
+    cursor: pointer;
+    transition: fill 0.3s;
+}
+
+.heartIcon:hover {
+    fill: #ff4500;
+}
+
+.ratingAndLocation {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--Main, #101828);
+}
+
+.starIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    color: var(--Main, #101828);
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    gap: 4px;
+}
+
+.locationIcon {
+    width: 16px;
+    height: 16px;
+}
+
+.description {
+    overflow: hidden;
+    color: var(--Text, #475467);
+    text-overflow: ellipsis;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    display: -webkit-box;
+    width: 465px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    margin: 24px 0;
+}
+
+.features {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.featureIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    background: var(--Gray-100, #f2f4f7);
+    mix-blend-mode: multiply;
+    padding: 12px 18px;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end; /* Добавлено для выравнивания кнопки вниз */
+    margin-top: auto; /* Отправить футер вниз */
+    padding-top: 24px; /* Добавлено для отступа сверху */
 }
 
 .button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #ff4500;
-    border: none;
-    border-radius: 4px;
+    display: flex;
+    width: 46px;
+    height: 24px;
+    padding: 16px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 200px;
+    background: var(--Button, #e44848);
     cursor: pointer;
     transition: background-color 0.3s;
+    white-space: nowrap;
+    text-decoration: none;
+
+    color: var(--White, #fff);
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: -0.08px;
 }
 
 .button:hover {
