@@ -15,13 +15,8 @@
     transform: translateX(-50%) scaleX(-1); /* Центрирование и отзеркаливание */
     width: 100%; /* Растягиваем по ширине окна */
     height: 100%; /* Растягиваем по высоте окна */
-    background: linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.2) 0%,
-            rgba(0, 0, 0, 0.2) 100%
-        ),
-        url('../../images/home/24c0292d5f6fc639a2ab802af8888c21.jpg') no-repeat
-            center / cover; /* Обеспечиваем масштабирование */
+    background-size: cover; /* Масштабируем изображение */
+    background-repeat: no-repeat; /* Убираем повторение */
     z-index: -1; /* На задний план */
 }
 
