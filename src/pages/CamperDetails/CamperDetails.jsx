@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Lightbox from 'react-lightbox-component';
@@ -13,6 +14,11 @@ function CamperDetails() {
     const { id } = useParams();
     const [camper, setCamper] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        comment: '',
+    });
     const [isLoading, setIsLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('features'); // 'features' or 'reviews'
 
@@ -69,9 +75,11 @@ function CamperDetails() {
                 const response = await axios.get(
                     `https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers/${id}`,
                 );
-                console.log('Camper data:', response.data);
                 setCamper(response.data);
             } catch (error) {
+                toast.error(
+                    'Failed to fetch camper details. Please try again later.',
+                );
                 console.error('Failed to fetch camper details:', error);
             } finally {
                 setIsLoading(false);
@@ -80,6 +88,33 @@ function CamperDetails() {
 
         fetchCamperDetails();
     }, [id]);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+
+        if (!formData.name || !formData.email || !selectedDate) {
+            toast.error('Please fill in all required fields!');
+            return;
+        }
+
+        // Отправляем данные формы
+        const bookingData = {
+            ...formData,
+            bookingDate: selectedDate,
+        };
+
+        // Здесь можно сделать запрос на сервер, если требуется
+        console.log('Booking Data:', bookingData);
+
+        toast.success('Booking successful! We will contact you soon.');
+        setFormData({ name: '', email: '', comment: '' });
+        setSelectedDate(null);
+    };
 
     if (isLoading) return <Loader />;
     if (!camper) return <p>Camper not found</p>;
@@ -401,19 +436,38 @@ function CamperDetails() {
                     <span className={styles.bookingDescription}>
                         Stay connected! We are always ready to help you.
                     </span>
-                    <form>
-                        <input type="text" placeholder="Name*" required />
-                        <input type="email" placeholder="Email*" required />
+                    <form onSubmit={handleFormSubmit}>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Name*"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email*"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            required
+                        />
                         <div className={styles.datePickerWrapper}>
                             <DatePicker
                                 selected={selectedDate}
                                 onChange={(date) => setSelectedDate(date)}
                                 placeholderText="Booking Date*"
-                                className={styles.dateInput} // Для стилизации input
-                                calendarClassName={styles.calendar} // Для стилизации календаря
+                                className={styles.dateInput}
+                                calendarClassName={styles.calendar}
                             />
                         </div>
-                        <textarea placeholder="Comment" />
+                        <textarea
+                            name="comment"
+                            placeholder="Comment"
+                            value={formData.comment}
+                            onChange={handleInputChange}
+                        />
                         <button type="submit" className={styles.bookButton}>
                             Send
                         </button>

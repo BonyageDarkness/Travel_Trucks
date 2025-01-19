@@ -20,6 +20,7 @@
         "react-loader-spinner": "^6.1.6",
         "react-redux": "^9.2.0",
         "react-router-dom": "^7.1.1",
+        "react-toastify": "^11.0.3",
         "yet-another-react-lightbox": "^3.21.7"
     },
     "devDependencies": {

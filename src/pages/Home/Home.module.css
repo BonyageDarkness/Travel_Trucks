@@ -1,21 +1,21 @@
 .home {
     position: relative;
-    width: 100%;
+    width: 1440px;
     height: 100vh; /* Фон растягивается на высоту окна */
-    display: flex;
-    align-items: center; /* Вертикальное центрирование */
-    color: var(--Inputs, #f7f7f7); /* Цвет текста */
+    display: flex; /* Вертикальное центрирование */
     overflow: hidden; /* Скрываем излишки */
 }
 
 .background {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%) scaleX(-1); /* Центрирование и отзеркаливание */
+    transform: translate(-50%, -50%) scaleX(-1); /* Центрирование и отзеркаливание */
     width: 100%; /* Растягиваем по ширине окна */
-    height: 100%; /* Растягиваем по высоте окна */
-    background-size: cover; /* Масштабируем изображение */
+    height: 696px;
+    min-height: 120%; /* Растягиваем по высоте окна */
+    background-size: contain; /* Масштабируем изображение */
+
     background-repeat: no-repeat; /* Убираем повторение */
     z-index: -1; /* На задний план */
     background-image: linear-gradient(
@@ -30,6 +30,7 @@
     z-index: 1; /* Поверх фона */
     position: relative; /* Относительно родителя */
     margin-left: 64px; /* Отступ слева */
+    margin-top: 324px;
 }
 
 .b {

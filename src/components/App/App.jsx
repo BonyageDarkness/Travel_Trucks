@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'; // Импортируем Provider
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import store from '../../redux/store'; // Импортируем ваш store
 import Header from '../Header/Header';
 import Home from '../../pages/Home/Home';
@@ -22,6 +24,7 @@ function App() {
                             element={<CamperDetails />}
                         />
                     </Routes>
+                    <ToastContainer />
                 </div>
             </Router>
         </Provider>
