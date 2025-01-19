@@ -1,6 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
-import backgroundImage from '../../images/home/24c0292d5f6fc639a2ab802af8888c21.jpg';
+
+const backgroundImage = new URL(
+    '../../images/home/24c0292d5f6fc639a2ab802af8888c21.jpg',
+    import.meta.url,
+).href;
 
 function Home() {
     const navigate = useNavigate();
