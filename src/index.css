@@ -10,3 +10,7 @@ h2 {
 p {
     margin: 0;
 }
+.no-scroll {
+    overflow: hidden !important; /* Убираем скроллинг */
+    height: 100vh; /* Оставляем высоту для экрана */
+}

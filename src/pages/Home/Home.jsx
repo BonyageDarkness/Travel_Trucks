@@ -1,8 +1,19 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 
 function Home() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Добавляем класс "no-scroll" к body при монтировании компонента
+        document.body.classList.add('no-scroll');
+
+        return () => {
+            // Убираем класс "no-scroll" при размонтировании компонента
+            document.body.classList.remove('no-scroll');
+        };
+    }, []);
 
     const handleViewNow = () => {
         navigate('/catalog');
