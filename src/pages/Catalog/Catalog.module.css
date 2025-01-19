@@ -1,7 +1,10 @@
 .catalog {
     display: flex;
+    justify-content: center;
     gap: 64px;
     padding: 120px 64px 50px 64px;
+    margin: 0 auto;
+    max-width: 1440px;
 }
 
 .filter {

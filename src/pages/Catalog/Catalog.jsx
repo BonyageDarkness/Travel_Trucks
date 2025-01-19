@@ -78,8 +78,10 @@ function Catalog() {
 
     return (
         <div className={styles.catalog}>
-            <div className={styles.filter}>
-                <FilterForm onApplyFilters={handleApplyFilters} />
+            <div className={styles.filterWrapper}>
+                <div className={styles.filter}>
+                    <FilterForm onApplyFilters={handleApplyFilters} />
+                </div>
             </div>
             <div className={styles.content}>
                 <div className={styles.list}>

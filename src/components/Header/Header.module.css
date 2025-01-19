@@ -1,31 +1,36 @@
 .header {
-    background-color: #f7f7f7;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--Badges, #f2f4f7);
+    background: var(--Inputs, #f7f7f7);
     position: fixed;
     top: 0;
     z-index: 1000;
-    width: 100%; /* Хедер на всю ширину */
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
     display: flex;
-    justify-content: space-between; /* Размещаем логотип и навигацию */
     align-items: center;
     max-width: 1440px;
-    margin: 0 auto;
+    width: 100%;
     padding: 24px 64px;
+    box-sizing: border-box;
 }
 
 .logo {
     width: 136px;
     height: 16px;
+    flex-shrink: 0;
 }
 
 .nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 32px;
     align-items: center;
-    margin: 0 auto; /* Центрируем ссылки */
 }
 
 .link {
